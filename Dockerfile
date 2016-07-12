@@ -7,8 +7,9 @@ RUN cd /tmp && curl https://codeload.github.com/OpenMage/magento-mirror/tar.gz/$
 RUN chown -R www-data:www-data /var/www/htdocs
 
 RUN apt-get update && apt-get install -y mysql-client-5.5 libxml2-dev patch
-RUN docker-php-ext-install soap \
-  && docker-php-ext-install xdebug
+RUN docker-php-ext-install soap
+RUN docker-php-ext-install xdebug
+RUN docker-php-ext-enable xdebug
 
 COPY ./bin/install-magento /usr/local/bin/install-magento
 
